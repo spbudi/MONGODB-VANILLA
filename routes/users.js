@@ -7,9 +7,50 @@ module.exports = (db) => {
   const collection = db.collection('todos');
 
   router.get('/', async function (req, res, next) {
+
+    const page = req.query.page || 1
+    const limit = 5
+    const values = {}
+    const offset = page * limit - limit
+
+    if(req.query.string){
+      values['string'] = new RegExp(`${req.query.string}`, 'i')
+    }
+    if (req.query.integer) {
+      values['integer'] = parseInt(req.query.integer)
+    }
+    if (req.query.float) {
+      values['float'] = JSON.parse(req.query.float)
+    }
+    if(req.query.fromdate && req.query.todate){
+      values['date'] = {
+        $gte: new Date(`${req.query.fromdate}`),
+        $lte: new Date(`${req.query.todate}`),
+      }
+    } else if(req.query.fromdate){
+      values['date'] = {$gte: new Date(`${req.query.fromdate}`)}
+    } else if(req.query.todate){
+      values['date'] = {$gte: new Date(`${req.query.todate}`)}
+    }
+    if(req.query.boolean){
+      values['boolean'] = (req.query.boolean)
+    }
+
     try {
-      const findResult = await collection.find({}).toArray();
-      res.status(200).json(findResult);
+      const collection = db.collection('todos')
+      const totalData = await collection.find(values).count()
+      const totalPages = Math.ceil(totalData / limit)
+      const limitation = { limit: parseInt(limit), skip: offset}
+
+      const breads = await collection.find(values, limitation).toArray()
+
+      res.status(200).json({
+        data: breads,
+        totalData,
+        totalPages,
+        display: limit,
+        page: parseInt(page)
+      })
     } catch (err) {
       res.json(err);
     }

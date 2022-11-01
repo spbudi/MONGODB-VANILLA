@@ -1,9 +1,9 @@
 <html>
   <head>
     <title>Express</title>
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <link  href="/stylesheets/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
     <script src="/javascripts/moment.min.js"></script>
-    <script src="/javascripts/script.js" ></script>
   </head>
   <body>
         <h1 class="text-center">BREADS (Browse, Read, Edit, Add, Delete, Sort)</h1>
@@ -77,9 +77,9 @@
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">
-                    Save
+                    save
                   </button>
-                  <button type="submit" class="btn btn-danger">
+                  <button type="reset" class="btn btn-danger">
                     cancel
                   </button>
                 </form>
@@ -93,38 +93,38 @@
 
             <div class="col">
               <div class="card">
-                <form>
+                <form id="searchForm">
                 <div class="card-header">
                   <h1>Search</h1>
                 </div>
                 <div class="card-body">
                   <!-- string -->
                   <div class="row mb-3">
-                    <label for="stringS" class="col-sm-2 col-form-label"> String</label>
+                    <label for="string" class="col-sm-2 col-form-label"> String</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="string" />
+                      <input type="text" class="form-control" id="searchString" />
                     </div>
                   </div>
                   <!-- integer -->
                   <div class="row mb-3">
-                    <label for="integerS" class="col-sm-2 col-form-label">Integer</label>
+                    <label for="integer" class="col-sm-2 col-form-label">Integer</label>
                     <div class="col-sm-10">
                       <input
                         type="number"
                         class="form-control"
-                        id="integer"
+                        id="searchInteger"
                       />
                     </div>
                   </div>
                   <!-- float -->
                   <div class="row mb-3">
-                    <label for="floatS" class="col-sm-2 col-form-label">Float</label>
+                    <label for="float" class="col-sm-2 col-form-label">Float</label>
                     <div class="col-sm-10">
                       <input
                         type="number"
                         step="0.005"
                         class="form-control"
-                        id="float"
+                        id="searchFloat"
                       />
                     </div>
                   </div>
@@ -132,19 +132,19 @@
                   <div class="row mb-3">
                     <label for="date" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                      <input type="date" name="fromdate" class="form-control" id="date" value="">
+                      <input type="date" name="fromdate" class="form-control" id="searchfromdate">
                       <span>to</span>
-                      <input type="date" name="todate" class="form-control" id="date" value="">
+                      <input type="date" name="todate" class="form-control" id="searchtodate">
                     </div>
                   </div>
                   <!-- BOOLEAN -->
                   <div class="row mb-3">
-                    <label for="booleanS" class="col-sm-2 col-form-label"> Boolean</label>
+                    <label for="boolean" class="col-sm-2 col-form-label"> Boolean</label>
                     <div class="col-sm-10">
-                        <select name="booleanS" class="form-control" id="boolean">
+                        <select name="boolean" class="form-control" id="searchBoolean">
                             <option value="" disabled selected >Choose the boolean ... </option>
-                            <option value="">true</option>
-                            <option value="">false</option>
+                            <option value=true>true</option>
+                            <option value=false>false</option>
                         </select>
                     </div>
                   </div>
@@ -153,7 +153,7 @@
                   <button type="submit" class="btn btn-primary">
                     Search
                   </button>
-                  <button type="submit" class="btn btn-danger">
+                  <button onclick="resetData()" class="btn btn-danger">
                     Reset
                   </button>
                 </form>
@@ -176,6 +176,7 @@
                     <table class="table table-stripped">
                       <thead>
                         <tr>
+                          <th>NO</th>
                           <th>String</th>
                           <th>Integer</th>
                           <th>Float</th>
@@ -190,7 +191,8 @@
                     </table>
                   </div>
                   <div class="card-footer">
-
+                    <nav aria-label="Page navigation example" id="pagination">
+                    </nav>
                   </div>
                 </div>
               </div>
@@ -200,5 +202,6 @@
             <!-- ======== END TABLE ======== -->
         </div>
       </div>
+    <script src="/javascripts/script.js" ></script>
   </body>
 </html>
