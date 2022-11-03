@@ -14,7 +14,7 @@
 
             <div class="col">
               <div class="card">
-                <form onSubmit = 'return saveData(event)'>
+                <form onsubmit = 'return saveData(event)'>
                 <div class="card-header">
                   <h1>Add & Edit</h1>
                 </div>
@@ -76,10 +76,10 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>
                     save
                   </button>
-                  <button type="reset" class="btn btn-danger">
+                  <button type="reset" class="btn btn-danger"><i class="fa-solid fa-xmark"></i>
                     cancel
                   </button>
                 </form>
@@ -93,21 +93,21 @@
 
             <div class="col">
               <div class="card">
-                <form id="searchForm">
+                <form id="form-search">
                 <div class="card-header">
                   <h1>Search</h1>
                 </div>
                 <div class="card-body">
                   <!-- string -->
                   <div class="row mb-3">
-                    <label for="string" class="col-sm-2 col-form-label"> String</label>
+                    <label for="searchString" class="col-sm-2 col-form-label"> String</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="searchString" />
                     </div>
                   </div>
                   <!-- integer -->
                   <div class="row mb-3">
-                    <label for="integer" class="col-sm-2 col-form-label">Integer</label>
+                    <label for="searchInteger" class="col-sm-2 col-form-label">Integer</label>
                     <div class="col-sm-10">
                       <input
                         type="number"
@@ -118,7 +118,7 @@
                   </div>
                   <!-- float -->
                   <div class="row mb-3">
-                    <label for="float" class="col-sm-2 col-form-label">Float</label>
+                    <label for="searchFloat" class="col-sm-2 col-form-label">Float</label>
                     <div class="col-sm-10">
                       <input
                         type="number"
@@ -130,11 +130,11 @@
                   </div>
                   <!-- date -->
                   <div class="row mb-3">
-                    <label for="date" class="col-sm-2 col-form-label">Date</label>
+                    <label for="searchDate" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                      <input type="date" name="fromdate" class="form-control" id="searchfromdate">
+                      <input type="date" name="searchStartDate" class="form-control" id="searchStartDate">
                       <span>to</span>
-                      <input type="date" name="todate" class="form-control" id="searchtodate">
+                      <input type="date" name="searchEndDate" class="form-control" id="searchEndDate">
                     </div>
                   </div>
                   <!-- BOOLEAN -->
@@ -150,10 +150,10 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
                     Search
                   </button>
-                  <button onclick="resetData()" class="btn btn-danger">
+                  <button onclick="resetData()" class="btn btn-danger"><i class="fa-solid fa-rotate"></i>
                     Reset
                   </button>
                 </form>
@@ -177,7 +177,7 @@
                       <thead>
                         <tr>
                           <th>NO</th>
-                          <th>String</th>
+                          <th><i class="fa-solid fa-sort"></i>String</th>
                           <th>Integer</th>
                           <th>Float</th>
                           <th>Date</th>
@@ -185,7 +185,7 @@
                           <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="body-header">
+                    <tbody id="body-users">
 
                     </tbody>
                     </table>
